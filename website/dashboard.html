@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel — SEMAE Atendimento</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+    <h1 id="saudacao">Bem-vindo ao Sistema de Atendimento</h1>
+    <p style="color:#5a7a8a; margin-bottom:24px;">Acompanhe seus chamados, consulte contas e solicite serviços.</p>
+
+    <div class="card-grid" id="stats-grid"></div>
+
+    <h2>Acesso Rápido</h2>
+    <div class="quick-links">
+      <a href="reportar-problema.html" class="quick-link">
+        <span class="link-icon">📋</span>
+        <span class="link-text">Reportar Problema</span>
+      </a>
+      <a href="chamados.html" class="quick-link">
+        <span class="link-icon">📂</span>
+        <span class="link-text">Meus Chamados</span>
+      </a>
+      <a href="segunda-via.html" class="quick-link">
+        <span class="link-icon">📄</span>
+        <span class="link-text">Segunda Via</span>
+      </a>
+      <a href="ajuda.html" class="quick-link">
+        <span class="link-icon">❓</span>
+        <span class="link-text">Ajuda / FAQ</span>
+      </a>
+    </div>
+
+    <h2 style="margin-top:24px;">Chamados Recentes</h2>
+    <div class="card">
+      <table class="tabela" id="tabela-recentes">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tipo</th>
+            <th>Status</th>
+            <th>Urgência</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+  <script src="js/dados.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if (!verificarAutenticacao()) { /* redireciona */ } else {
+      (function() {
+        const usuario = obterUsuario();
+        const nome = usuario.nome.split(" ")[0];
+        document.getElementById("saudacao").textContent = `Bem-vindo, ${nome}`;
+
+        const chamados = obterChamados();
+        const abertos = chamados.filter(c => c.status === "Aberto").length;
+        const emAndamento = chamados.filter(c => c.status === "Em Andamento").length;
+        const resolvidos = chamados.filter(c => c.status === "Resolvido").length;
+        const total = chamados.length;
+
+        document.getElementById("stats-grid").innerHTML = `
+          <div class="stat-card">
+            <div class="stat-numero">${total}</div>
+            <div class="stat-label">Total de Chamados</div>
+          </div>
+          <div class="stat-card" style="border-left-color:#d64040;">
+            <div class="stat-numero">${abertos}</div>
+            <div class="stat-label">Abertos</div>
+          </div>
+          <div class="stat-card" style="border-left-color:#d4960a;">
+            <div class="stat-numero">${emAndamento}</div>
+            <div class="stat-label">Em Andamento</div>
+          </div>
+          <div class="stat-card" style="border-left-color:#2a9d4e;">
+            <div class="stat-numero">${resolvidos}</div>
+            <div class="stat-label">Resolvidos</div>
+          </div>
+        `;
+
+        const recentes = chamados.slice(-5).reverse();
+        const tbody = document.querySelector("#tabela-recentes tbody");
+        recentes.forEach(c => {
+          const statusClasse = c.status === "Aberto" ? "badge-aberto" : c.status === "Em Andamento" ? "badge-em-andamento" : "badge-resolvido";
+          const urgenciaClasse = c.urgencia === "Alta" ? "badge-alta" : c.urgencia === "Média" ? "badge-media" : "badge-baixa";
+          tbody.innerHTML += `
+            <tr>
+              <td><a href="chamado-detalhe.html?id=${c.id}" style="color:#1a6fa0;text-decoration:none;font-weight:600;">#${c.id}</a></td>
+              <td>${c.tipo}</td>
+              <td><span class="badge ${statusClasse}">${c.status}</span></td>
+              <td><span class="badge ${urgenciaClasse}">${c.urgencia}</span></td>
+              <td>${formatarData(c.dataCriacao)}</td>
+            </tr>
+          `;
+        });
+      })();
+
+      function formatarData(dataStr) {
+        const [ano, mes, dia] = dataStr.split("-");
+        return `${dia}/${mes}/${ano}`;
+      }
+    }
+  </script>
+</body>
+</html>

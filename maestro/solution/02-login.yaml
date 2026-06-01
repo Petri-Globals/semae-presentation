@@ -1,0 +1,19 @@
+url: https://petri-globals.github.io/semae-presentation
+---
+- launchApp:
+    clearState: true
+- tapOn: "Usuário"
+- inputText: "admin"
+- tapOn: "Senha"
+- inputText: "semae123"
+- tapOn: "Entrar"
+- assertVisible:
+    css: "#saudacao"
+- launchApp:
+    clearState: true
+- tapOn: "Usuário"
+- inputText: "errado"
+- tapOn: "Senha"
+- inputText: "errado"
+- tapOn: "Entrar"
+- assertVisible: "Usuário ou senha incorretos"

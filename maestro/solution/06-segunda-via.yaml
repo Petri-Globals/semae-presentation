@@ -1,0 +1,25 @@
+url: https://petri-globals.github.io/semae-presentation
+---
+- launchApp:
+    clearState: true
+- tapOn: "Usuário"
+- inputText: "admin"
+- tapOn: "Senha"
+- inputText: "semae123"
+- tapOn: "Entrar"
+- assertVisible:
+    css: "#saudacao"
+- tapOn: "Segunda Via"
+- tapOn: "Número da Matrícula"
+- inputText: "12345"
+- tapOn: "Consultar"
+- assertVisible: "12345"
+- assertVisible: "Maria Oliveira"
+- assertVisible: "12 m³"
+- assertVisible: "85,00"
+- assertVisible: "15/07/2026"
+- tapOn: "Número da Matrícula"
+- eraseText
+- inputText: "99999"
+- tapOn: "Consultar"
+- assertVisible: "não encontrada"

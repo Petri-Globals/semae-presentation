@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — SEMAE Atendimento</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <h1>SEMAE</h1>
+      <p class="subtitulo">Sistema de Atendimento ao Cidadão</p>
+      <div class="login-error" id="login-error">Usuário ou senha incorretos.</div>
+      <form id="login-form">
+        <div class="form-group" id="grupo-login">
+          <label for="campo-login">Usuário</label>
+          <input type="text" id="campo-login" placeholder="Digite seu usuário" autocomplete="username">
+          <span class="error-msg">Campo obrigatório.</span>
+        </div>
+        <div class="form-group" id="grupo-senha">
+          <label for="campo-senha">Senha</label>
+          <input type="password" id="campo-senha" placeholder="Digite sua senha" autocomplete="current-password">
+          <span class="error-msg">Campo obrigatório.</span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">Entrar</button>
+      </form>
+    </div>
+  </div>
+  <script src="js/dados.js"></script>
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const login = document.getElementById("campo-login").value.trim();
+      const senha = document.getElementById("campo-senha").value.trim();
+      let valido = true;
+
+      document.getElementById("grupo-login").classList.remove("invalid");
+      document.getElementById("grupo-senha").classList.remove("invalid");
+      document.getElementById("login-error").classList.remove("show");
+
+      if (!login) {
+        document.getElementById("grupo-login").classList.add("invalid");
+        valido = false;
+      }
+      if (!senha) {
+        document.getElementById("grupo-senha").classList.add("invalid");
+        valido = false;
+      }
+      if (!valido) return;
+
+      const resultado = fazerLogin(login, senha);
+      if (resultado.sucesso) {
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById("login-error").classList.add("show");
+      }
+    });
+  </script>
+</body>
+</html>

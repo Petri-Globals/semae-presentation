@@ -1,0 +1,21 @@
+url: https://petri-globals.github.io/semae-presentation
+---
+- launchApp:
+    clearState: true
+- tapOn: "Usuário"
+- inputText: "admin"
+- tapOn: "Senha"
+- inputText: "semae123"
+- tapOn: "Entrar"
+- assertVisible:
+    css: "#saudacao"
+- tapOn: "Meus Chamados"
+- tapOn: "#002"
+- assertVisible: "Falta de água"
+- assertVisible: "Em Andamento"
+- assertVisible: "Av. Brasil, 456"
+- tapOn: "Adicionar Observação"
+- inputText: "Equipe de manutenção confirmada para hoje."
+- tapOn: "Adicionar"
+- assertVisible: "Observação adicionada com sucesso"
+- assertVisible: "Equipe de manutenção confirmada para hoje"

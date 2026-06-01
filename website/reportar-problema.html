@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportar Problema — SEMAE Atendimento</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+    <h1>Reportar Problema</h1>
+    <p style="color:#5a7a8a;margin-bottom:24px;">Preencha o formulário abaixo para registrar um novo chamado.</p>
+
+    <div class="card">
+      <form id="form-reportar">
+        <div class="form-group" id="grupo-tipo">
+          <label for="campo-tipo">Tipo de Problema</label>
+          <select id="campo-tipo">
+            <option value="">Selecione...</option>
+            <option value="Vazamento">Vazamento</option>
+            <option value="Falta de água">Falta de água</option>
+            <option value="Esgoto a céu aberto">Esgoto a céu aberto</option>
+            <option value="Conta com erro">Conta com erro</option>
+            <option value="Hidrômetro quebrado">Hidrômetro quebrado</option>
+            <option value="Interrupção de fornecimento">Interrupção de fornecimento</option>
+            <option value="Ligação nova">Ligação nova</option>
+            <option value="Outro">Outro</option>
+          </select>
+          <span class="error-msg">Selecione um tipo de problema.</span>
+        </div>
+
+        <div class="form-group" id="grupo-endereco">
+          <label for="campo-endereco">Endereço</label>
+          <input type="text" id="campo-endereco" placeholder="Ex: Rua das Flores, 100">
+          <span class="error-msg">Campo obrigatório.</span>
+        </div>
+
+        <div class="form-group" id="grupo-descricao">
+          <label for="campo-descricao">Descrição</label>
+          <textarea id="campo-descricao" rows="4" placeholder="Descreva o problema com detalhes..."></textarea>
+          <span class="error-msg">Campo obrigatório.</span>
+        </div>
+
+        <div class="form-group" id="grupo-urgencia">
+          <label>Urgência</label>
+          <div class="radio-group">
+            <label><input type="radio" name="urgencia" value="Baixa"> Baixa</label>
+            <label><input type="radio" name="urgencia" value="Média"> Média</label>
+            <label><input type="radio" name="urgencia" value="Alta"> Alta</label>
+          </div>
+          <span class="error-msg">Selecione a urgência.</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top:8px;">Enviar Chamado</button>
+      </form>
+    </div>
+  </div>
+  <script src="js/dados.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/reportar.js"></script>
+</body>
+</html>

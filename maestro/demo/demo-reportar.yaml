@@ -1,0 +1,21 @@
+url: https://petri-globals.github.io/semae-presentation
+---
+- launchApp:
+    clearState: true
+- tapOn: "Usuário"
+- inputText: "admin"
+- tapOn: "Senha"
+- inputText: "semae123"
+- tapOn: "Entrar"
+- assertVisible: "Bem-vindo"
+- tapOn: "Reportar Problema"
+- tapOn: "Selecione..."
+- tapOn: "Vazamento"
+- tapOn: "Endereço"
+- inputText: "Rua das Flores, 100"
+- tapOn: "Descrição"
+- inputText: "Vazamento na calçada em frente ao portão."
+- tapOn: "Alta"
+- tapOn: "Enviar Chamado"
+- assertVisible: "registrado com sucesso"
+- takeScreenshot: "demo-reportar"

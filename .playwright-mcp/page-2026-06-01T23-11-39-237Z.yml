@@ -1,0 +1,13 @@
+- generic [ref=e4]:
+  - heading "SEMAE" [level=1] [ref=e5]
+  - paragraph [ref=e6]: Sistema de Atendimento ao Cidadão
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - generic [ref=e9]: Usuário
+      - textbox "Usuário" [ref=e10]:
+        - /placeholder: Digite seu usuário
+    - generic [ref=e11]:
+      - generic [ref=e12]: Senha
+      - textbox "Senha" [ref=e13]:
+        - /placeholder: Digite sua senha
+    - button "Entrar" [ref=e14] [cursor=pointer]

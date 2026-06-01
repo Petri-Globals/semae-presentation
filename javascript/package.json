@@ -1,0 +1,12 @@
+{
+  "name": "semae-workshop-javascript",
+  "version": "1.0.0",
+  "description": "Desafios JavaScript — Workshop de Testes Automatizados SEMAE",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

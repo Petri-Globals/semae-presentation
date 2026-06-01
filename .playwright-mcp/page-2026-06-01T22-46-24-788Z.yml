@@ -1,0 +1,113 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]: SEMAE Atendimento
+    - generic [ref=e5]:
+      - link "Painel" [ref=e6] [cursor=pointer]:
+        - /url: dashboard.html
+      - link "Meus Chamados" [ref=e7] [cursor=pointer]:
+        - /url: chamados.html
+      - link "Reportar Problema" [ref=e8] [cursor=pointer]:
+        - /url: reportar-problema.html
+      - link "Segunda Via" [ref=e9] [cursor=pointer]:
+        - /url: segunda-via.html
+      - link "Perfil" [ref=e10] [cursor=pointer]:
+        - /url: perfil.html
+      - link "Ajuda" [ref=e11] [cursor=pointer]:
+        - /url: ajuda.html
+    - generic [ref=e12]:
+      - generic [ref=e13]: Olá, Carlos
+      - button "Sair" [ref=e14] [cursor=pointer]
+  - generic [ref=e15]:
+    - heading "Bem-vindo, Carlos" [level=1] [ref=e16]
+    - paragraph [ref=e17]: Acompanhe seus chamados, consulte contas e solicite serviços.
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]: "8"
+        - generic [ref=e21]: Total de Chamados
+      - generic [ref=e22]:
+        - generic [ref=e23]: "3"
+        - generic [ref=e24]: Abertos
+      - generic [ref=e25]:
+        - generic [ref=e26]: "2"
+        - generic [ref=e27]: Em Andamento
+      - generic [ref=e28]:
+        - generic [ref=e29]: "3"
+        - generic [ref=e30]: Resolvidos
+    - heading "Acesso Rápido" [level=2] [ref=e31]
+    - generic [ref=e32]:
+      - link "📋 Reportar Problema" [ref=e33] [cursor=pointer]:
+        - /url: reportar-problema.html
+        - generic [ref=e34]: 📋
+        - generic [ref=e35]: Reportar Problema
+      - link "📂 Meus Chamados" [ref=e36] [cursor=pointer]:
+        - /url: chamados.html
+        - generic [ref=e37]: 📂
+        - generic [ref=e38]: Meus Chamados
+      - link "📄 Segunda Via" [ref=e39] [cursor=pointer]:
+        - /url: segunda-via.html
+        - generic [ref=e40]: 📄
+        - generic [ref=e41]: Segunda Via
+      - link "❓ Ajuda / FAQ" [ref=e42] [cursor=pointer]:
+        - /url: ajuda.html
+        - generic [ref=e43]: ❓
+        - generic [ref=e44]: Ajuda / FAQ
+    - heading "Chamados Recentes" [level=2] [ref=e45]
+    - table [ref=e47]:
+      - rowgroup [ref=e48]:
+        - row "ID Tipo Status Urgência Data" [ref=e49]:
+          - columnheader "ID" [ref=e50]
+          - columnheader "Tipo" [ref=e51]
+          - columnheader "Status" [ref=e52]
+          - columnheader "Urgência" [ref=e53]
+          - columnheader "Data" [ref=e54]
+      - rowgroup [ref=e55]:
+        - row "#008 Hidrômetro quebrado Resolvido Baixa 15/05/2026" [ref=e56]:
+          - cell "#008" [ref=e57]:
+            - link "#008" [ref=e58] [cursor=pointer]:
+              - /url: chamado-detalhe.html?id=008
+          - cell "Hidrômetro quebrado" [ref=e59]
+          - cell "Resolvido" [ref=e60]:
+            - generic [ref=e61]: Resolvido
+          - cell "Baixa" [ref=e62]:
+            - generic [ref=e63]: Baixa
+          - cell "15/05/2026" [ref=e64]
+        - row "#007 Interrupção de fornecimento Aberto Alta 01/06/2026" [ref=e65]:
+          - cell "#007" [ref=e66]:
+            - link "#007" [ref=e67] [cursor=pointer]:
+              - /url: chamado-detalhe.html?id=007
+          - cell "Interrupção de fornecimento" [ref=e68]
+          - cell "Aberto" [ref=e69]:
+            - generic [ref=e70]: Aberto
+          - cell "Alta" [ref=e71]:
+            - generic [ref=e72]: Alta
+          - cell "01/06/2026" [ref=e73]
+        - row "#006 Ligação nova Resolvido Baixa 10/05/2026" [ref=e74]:
+          - cell "#006" [ref=e75]:
+            - link "#006" [ref=e76] [cursor=pointer]:
+              - /url: chamado-detalhe.html?id=006
+          - cell "Ligação nova" [ref=e77]
+          - cell "Resolvido" [ref=e78]:
+            - generic [ref=e79]: Resolvido
+          - cell "Baixa" [ref=e80]:
+            - generic [ref=e81]: Baixa
+          - cell "10/05/2026" [ref=e82]
+        - row "#005 Vazamento Aberto Média 01/06/2026" [ref=e83]:
+          - cell "#005" [ref=e84]:
+            - link "#005" [ref=e85] [cursor=pointer]:
+              - /url: chamado-detalhe.html?id=005
+          - cell "Vazamento" [ref=e86]
+          - cell "Aberto" [ref=e87]:
+            - generic [ref=e88]: Aberto
+          - cell "Média" [ref=e89]:
+            - generic [ref=e90]: Média
+          - cell "01/06/2026" [ref=e91]
+        - row "#004 Esgoto a céu aberto Em Andamento Alta 30/05/2026" [ref=e92]:
+          - cell "#004" [ref=e93]:
+            - link "#004" [ref=e94] [cursor=pointer]:
+              - /url: chamado-detalhe.html?id=004
+          - cell "Esgoto a céu aberto" [ref=e95]
+          - cell "Em Andamento" [ref=e96]:
+            - generic [ref=e97]: Em Andamento
+          - cell "Alta" [ref=e98]:
+            - generic [ref=e99]: Alta
+          - cell "30/05/2026" [ref=e100]

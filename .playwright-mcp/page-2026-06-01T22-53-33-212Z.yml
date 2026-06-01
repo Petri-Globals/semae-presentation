@@ -1,0 +1,41 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]: SEMAE Atendimento
+    - generic [ref=e5]:
+      - link "Painel" [ref=e6] [cursor=pointer]:
+        - /url: dashboard.html
+      - link "Meus Chamados" [ref=e7] [cursor=pointer]:
+        - /url: chamados.html
+      - link "Reportar Problema" [ref=e8] [cursor=pointer]:
+        - /url: reportar-problema.html
+      - link "Segunda Via" [ref=e9] [cursor=pointer]:
+        - /url: segunda-via.html
+      - link "Perfil" [ref=e10] [cursor=pointer]:
+        - /url: perfil.html
+      - link "Ajuda" [ref=e11] [cursor=pointer]:
+        - /url: ajuda.html
+    - generic [ref=e12]:
+      - generic [ref=e13]: Olá, Carlos
+      - button "Sair" [ref=e14] [cursor=pointer]
+  - generic [ref=e15]:
+    - heading "Perguntas Frequentes" [level=1] [ref=e16]
+    - paragraph [ref=e17]: Encontre respostas para as dúvidas mais comuns sobre os serviços da SEMAE.
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20] [cursor=pointer]: Como solicitar uma ligação nova de água? −
+        - paragraph [ref=e21]: Dirija-se a uma unidade de atendimento da SEMAE com RG, CPF e comprovante de residência. O pedido também pode ser feito pelo site da prefeitura. O prazo médio de atendimento é de 5 dias úteis.
+      - generic [ref=e22]:
+        - generic [ref=e23] [cursor=pointer]: O que fazer em caso de vazamento? +
+        - paragraph [ref=e24]: Comunique o vazamento pela Central de Atendimento (telefone 156 ou site da SEMAE). Para vazamentos pequenos, feche o registro geral do imóvel. Em caso de vazamento na rua, a SEMAE enviará uma equipe de emergência.
+      - generic [ref=e25]:
+        - generic [ref=e26] [cursor=pointer]: Como contestar o valor da conta? +
+        - paragraph [ref=e27]: Acesse uma unidade da SEMAE com a conta em mãos e solicite uma revisão de consumo. O pedido será analisado e, se confirmado erro, o valor será corrigido na próxima fatura.
+      - generic [ref=e28]:
+        - generic [ref=e29] [cursor=pointer]: Qual o prazo para atendimento de emergência? +
+        - paragraph [ref=e30]: Emergências como ruptura de tubulação e esgoto a céu aberto possuem atendimento em até 4 horas após o registro. Vazamentos menores são atendidos em até 48 horas.
+      - generic [ref=e31]:
+        - generic [ref=e32] [cursor=pointer]: Como solicitar a segunda via da conta? +
+        - paragraph [ref=e33]: A segunda via pode ser obtida pelo site da SEMAE, em unidades de atendimento ou pelo telefone 156. Informe o número da matrícula do imóvel.
+      - generic [ref=e34]:
+        - generic [ref=e35] [cursor=pointer]: O que fazer quando falta água no meu bairro? +
+        - paragraph [ref=e36]: Primeiro, verifique com vizinhos se o problema é localizado. Em seguida, entre em contato com a SEMAE pelo telefone 156 ou consulte o site para verificar se há manutenção programada na sua região.

@@ -1,0 +1,14 @@
+url: https://petri-globals.github.io/semae-presentation
+---
+# PARTE A: Login válido
+
+# 1. Abra o site com clearState
+- launchApp:
+    clearState: true
+
+# 2-5: Complete aqui
+
+
+# PARTE B: Login inválido
+
+# 6-10: Complete aqui

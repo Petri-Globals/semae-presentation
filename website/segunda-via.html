@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segunda Via — SEMAE Atendimento</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+    <h1>Segunda Via de Conta</h1>
+    <p style="color:#5a7a8a;margin-bottom:24px;">Informe o número da matrícula para consultar sua conta.</p>
+
+    <div class="card">
+      <form id="form-segunda-via">
+        <div class="form-group" id="grupo-matricula" style="max-width:400px;">
+          <label for="campo-matricula">Número da Matrícula</label>
+          <input type="text" id="campo-matricula" placeholder="Ex: 12345">
+          <span class="error-msg">Campo obrigatório.</span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:8px;">Consultar</button>
+      </form>
+    </div>
+
+    <div class="card" id="card-resultado" style="display:none;">
+      <h2>Dados da Conta</h2>
+      <div class="conta-info" id="conta-dados"></div>
+    </div>
+
+    <div class="card" id="card-erro" style="display:none;">
+      <p style="color:#d64040;font-weight:600;" id="msg-erro">Matrícula não encontrada.</p>
+    </div>
+  </div>
+  <script src="js/dados.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/segunda-via.js"></script>
+</body>
+</html>

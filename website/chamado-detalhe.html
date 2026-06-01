@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhe do Chamado — SEMAE Atendimento</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+    <a href="chamados.html" style="color:#1a6fa0;text-decoration:none;font-size:14px;margin-bottom:16px;display:inline-block;">← Voltar para Meus Chamados</a>
+    <h1 id="titulo-chamado">Chamado #—</h1>
+
+    <div class="card" id="card-detalhes">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="detalhe-campo">
+          <div class="rotulo">Tipo</div>
+          <div class="valor" id="det-tipo">—</div>
+        </div>
+        <div class="detalhe-campo">
+          <div class="rotulo">Status</div>
+          <div class="valor" id="det-status">—</div>
+        </div>
+        <div class="detalhe-campo">
+          <div class="rotulo">Urgência</div>
+          <div class="valor" id="det-urgencia">—</div>
+        </div>
+        <div class="detalhe-campo">
+          <div class="rotulo">Data de Criação</div>
+          <div class="valor" id="det-data">—</div>
+        </div>
+        <div class="detalhe-campo" style="grid-column:1/-1;">
+          <div class="rotulo">Endereço</div>
+          <div class="valor" id="det-endereco">—</div>
+        </div>
+        <div class="detalhe-campo" style="grid-column:1/-1;">
+          <div class="rotulo">Descrição</div>
+          <div class="valor" id="det-descricao">—</div>
+        </div>
+      </div>
+
+      <div class="observacoes-lista">
+        <h2>Observações</h2>
+        <div id="lista-observacoes"></div>
+
+        <div class="form-group" style="margin-top:16px;">
+          <label for="campo-observacao">Adicionar Observação</label>
+          <textarea id="campo-observacao" rows="3" placeholder="Digite sua observação..."></textarea>
+          <span class="error-msg">Campo obrigatório.</span>
+        </div>
+        <button class="btn btn-primary" id="btn-adicionar-obs" style="margin-top:8px;">Adicionar</button>
+      </div>
+    </div>
+  </div>
+  <script src="js/dados.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if (!verificarAutenticacao()) { /* redireciona */ } else {
+      (function() {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+        const chamados = obterChamados();
+        const chamado = chamados.find(c => c.id === id);
+
+        if (!chamado) {
+          document.getElementById("card-detalhes").innerHTML = '<div class="vazio-msg">Chamado não encontrado.</div>';
+          return;
+        }
+
+        const statusClasse = chamado.status === "Aberto" ? "badge-aberto" : chamado.status === "Em Andamento" ? "badge-em-andamento" : "badge-resolvido";
+        const urgenciaClasse = chamado.urgencia === "Alta" ? "badge-alta" : chamado.urgencia === "Média" ? "badge-media" : "badge-baixa";
+
+        document.getElementById("titulo-chamado").textContent = `Chamado #${chamado.id}`;
+        document.getElementById("det-tipo").textContent = chamado.tipo;
+        document.getElementById("det-status").innerHTML = `<span class="badge ${statusClasse}">${chamado.status}</span>`;
+        document.getElementById("det-urgencia").innerHTML = `<span class="badge ${urgenciaClasse}">${chamado.urgencia}</span>`;
+        document.getElementById("det-data").textContent = formatarData(chamado.dataCriacao);
+        document.getElementById("det-endereco").textContent = chamado.endereco;
+        document.getElementById("det-descricao").textContent = chamado.descricao;
+
+        function renderizarObservacoes() {
+          const container = document.getElementById("lista-observacoes");
+          container.innerHTML = "";
+          if (chamado.observacoes.length === 0) {
+            container.innerHTML = '<p style="color:#5a7a8a;font-size:13px;">Nenhuma observação registrada.</p>';
+            return;
+          }
+          chamado.observacoes.forEach(obs => {
+            container.innerHTML += `
+              <div class="observacao-item">
+                <div class="obs-data">${formatarData(obs.data)}</div>
+                <div class="obs-texto">${obs.texto}</div>
+              </div>
+            `;
+          });
+        }
+        renderizarObservacoes();
+
+        document.getElementById("btn-adicionar-obs").addEventListener("click", function() {
+          const texto = document.getElementById("campo-observacao").value.trim();
+          const grupo = document.getElementById("campo-observacao").closest(".form-group");
+          grupo.classList.remove("invalid");
+          if (!texto) {
+            grupo.classList.add("invalid");
+            return;
+          }
+          adicionarObservacao(id, texto);
+          chamado.observacoes.push({ texto, data: new Date().toISOString().split("T")[0] });
+          document.getElementById("campo-observacao").value = "";
+          renderizarObservacoes();
+          showToast("Observação adicionada com sucesso.", "success");
+        });
+
+        function formatarData(dataStr) {
+          const [ano, mes, dia] = dataStr.split("-");
+          return `${dia}/${mes}/${ano}`;
+        }
+      })();
+    }
+  </script>
+</body>
+</html>
