@@ -15,6 +15,20 @@ Preencher um formulário completo com múltiplos campos e validar que o chamado 
 7. Clique em "Enviar Chamado"
 8. Verifique que a mensagem "registrado com sucesso" aparece
 
+## Cenário
+
+```gherkin
+Cenário: Reportar vazamento
+  Dado que fiz login no sistema
+  E naveguei para "Reportar Problema"
+  Quando seleciono o tipo "Vazamento"
+  E preencho o endereço "Rua Augusta, 1500"
+  E preencho a descrição "Vazamento no cruzamento com a Rua Oscar Freire"
+  E seleciono urgência "Alta"
+  E clico em "Enviar Chamado"
+  Então vejo "registrado com sucesso" na tela
+```
+
 ## Comandos Maestro que você vai usar
 
 | Comando | O que faz |

@@ -11,6 +11,15 @@ Navegar pelo site, clicar em links e verificar que o conteúdo correto aparece n
 3. Clique em uma das perguntas do FAQ
 4. Verifique que a resposta da pergunta aparece na tela
 
+## Cenário
+
+```gherkin
+Cenário: Verificar resposta do FAQ
+  Dado que abro a página de Ajuda
+  Quando clico em "Como solicitar uma ligação nova de água?"
+  Então vejo a resposta da pergunta na tela
+```
+
 ## Comandos Maestro que você vai usar
 
 | Comando | O que faz |

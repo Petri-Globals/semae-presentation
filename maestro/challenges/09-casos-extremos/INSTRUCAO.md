@@ -23,6 +23,28 @@ Testar o comportamento do sistema quando o usuário faz algo errado: envia formu
 8. Navegue até "Meus Chamados", digite "XYZW" no campo de busca
 9. Verifique que "Nenhum chamado encontrado" aparece
 
+## Cenário
+
+```gherkin
+Cenário: Login com campos vazios
+  Dado que abro a página de login
+  Quando clico em "Entrar" sem preencher nada
+  Então vejo "Campo obrigatório"
+
+Cenário: Formulário vazio de reportar problema
+  Dado que fiz login e naveguei para "Reportar Problema"
+  Quando clico em "Enviar Chamado" sem preencher
+  Então vejo mensagens de erro
+
+Cenário: Matrícula inexistente
+  Quando navego para "Segunda Via" e digito "00000"
+  Então vejo "não encontrada"
+
+Cenário: Busca sem resultados
+  Quando navego para "Meus Chamados" e digito "XYZW"
+  Então vejo "Nenhum chamado encontrado"
+```
+
 ## Comandos Maestro que você vai usar
 
 | Comando | O que faz |

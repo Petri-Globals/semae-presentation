@@ -13,6 +13,19 @@ Consultar uma conta de água pela matrícula e verificar os dados retornados.
 5. Apague a matrícula, digite `99999` e clique em "Consultar"
 6. Verifique que a mensagem de erro aparece
 
+## Cenário
+
+```gherkin
+Cenário: Consultar conta por matrícula válida
+  Dado que fiz login e naveguei para "Segunda Via"
+  Quando digito a matrícula "12345" e clico em "Consultar"
+  Então vejo os dados da conta na tela
+
+Cenário: Consultar conta por matrícula inválida
+  Quando apago o campo e digito "99999" e clico em "Consultar"
+  Então vejo a mensagem "não encontrada"
+```
+
 ## Comandos Maestro que você vai usar
 
 | Comando | O que faz |

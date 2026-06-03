@@ -11,6 +11,17 @@ Preencher o formulário de login, enviar e verificar que o login foi bem-sucedid
 3. Clique em "Entrar"
 4. Verifique que "Bem-vindo" aparece na tela
 
+## Cenário
+
+```gherkin
+Cenário: Login válido
+  Dado que abro a página de login
+  Quando preencho "admin" no campo "Usuário"
+  E preencho "semae123" no campo "Senha"
+  E clico em "Entrar"
+  Então vejo "Bem-vindo" na tela
+```
+
 ## Comandos Maestro que você vai usar
 
 | Comando | O que faz |

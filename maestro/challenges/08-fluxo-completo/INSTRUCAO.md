@@ -12,6 +12,19 @@ Criar um teste E2E completo que usa subflows para compor um fluxo de ponta a pon
 4. Clique no chamado e verifique que o endereço `Rua Consolação, 300` aparece nos detalhes
 5. Faça logout usando o subflow `../subflows/logout.yaml`
 
+## Cenário
+
+```gherkin
+Cenário: Fluxo completo de ponta a ponta
+  Dado que fiz login usando o subflow
+  Quando reporto um problema do tipo "Esgoto a céu aberto"
+  Então vejo o chamado na listagem de "Meus Chamados"
+  Quando clico no chamado
+  Então vejo "Rua Consolação, 300" nos detalhes
+  Quando faço logout usando o subflow
+  Então volto para a página de login
+```
+
 ## Comandos Maestro que você vai usar
 
 | Comando | O que faz |

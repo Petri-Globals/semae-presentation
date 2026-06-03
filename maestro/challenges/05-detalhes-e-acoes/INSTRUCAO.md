@@ -14,6 +14,18 @@ Navegar da listagem para o detalhe de um chamado, visualizar suas informações 
 6. Verifique que a mensagem de sucesso aparece
 7. Verifique que o texto da observação aparece na lista
 
+## Cenário
+
+```gherkin
+Cenário: Adicionar observação em chamado
+  Dado que fiz login e naveguei para "Meus Chamados"
+  Quando clico no chamado "#002"
+  Então vejo "Falta de água" nos detalhes
+  Quando digito uma observação e clico em "Adicionar"
+  Então vejo a mensagem de sucesso
+  E vejo o texto da observação na lista
+```
+
 ## Comandos Maestro que você vai usar
 
 | Comando | O que faz |
