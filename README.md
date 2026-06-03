@@ -64,7 +64,7 @@ Cada desafio contem:
 | 05 | Detalhes e Acoes      | Intermediario | Navegacao click-through                    |
 | 06 | Segunda Via           | Intermediario | Multiplas assertions                       |
 | 07 | Perfil                | Intermediario | Edicao e persistencia                      |
-| 08 | Fluxo Completo        | Avancado      | E2E com subflows                           |
+| 08 | Fluxo Completo        | Avancado      | E2E com runFlow                            |
 | 09 | Casos Extremos        | Bonus         | Error handling, edge cases                 |
 
 ## Desafios JavaScript (10-11)
