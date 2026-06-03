@@ -1,118 +1,59 @@
-# Desafio 10 — TDD Red/Green: calcularContaDeAgua()
-
-> **Solo** — Vivencie o ciclo Red → Green do TDD.
+# Desafio 10 — TDD Red/Green: classificarConta()
 
 ## Objetivo
 
-Escrever testes ANTES de implementar a função, ver os testes falharem (RED), depois implementar a função e ver os testes passarem (GREEN).
+Escrever testes ANTES de implementar a funcao, ver os testes falharem (RED), depois implementar a funcao e ver os testes passarem (GREEN).
 
-## Contexto
+## Regras de negocio
 
-A SEMAE precisa de uma função que calcula o valor da conta de água com base no consumo e na tarifa. A regra é:
+A funcao `classificarConta(consumoM3)` recebe o consumo em metros cubicos e retorna a faixa de consumo:
 
-- **Consumo até 10m³**: valor fixo de tarifa × 10 (tarifa mínima), independente do consumo real
-- **Consumo acima de 10m³**: tarifa mínima + (consumo - 10) × tarifa × 1.5 (faixa de excesso)
-- **Consumo negativo ou tarifa negativa**: retorna 0
+- Ate 10m3 → `"Economica"`
+- 11 a 20m3 → `"Normal"`
+- Acima de 20m3 → `"Atencao"`
+- Consumo negativo → `null`
 
-### Exemplos
+## O que voce precisa fazer
 
-| Consumo (m³) | Tarifa (R$/m³) | Cálculo | Resultado |
-|-------------|----------------|---------|-----------|
-| 8 | 5.00 | 5 × 10 = 50.00 | 50.00 |
-| 10 | 5.00 | 5 × 10 = 50.00 | 50.00 |
-| 15 | 5.00 | 50 + (5 × 5 × 1.5) = 50 + 37.5 | 87.50 |
-| 25 | 7.00 | 70 + (15 × 7 × 1.5) = 70 + 157.5 | 227.50 |
-| 0 | 5.00 | 5 × 10 = 50.00 | 50.00 |
-| -5 | 5.00 | inválido | 0 |
-| 10 | -3 | inválido | 0 |
+1. Crie `src/classificarConta.test.js` com testes para os cenarios acima
+2. Rode `npx jest` — todos devem **falhar** (RED)
+3. Implemente `src/classificarConta.js`
+4. Rode `npx jest` novamente — todos devem **passar** (GREEN)
 
-## Passo 1 — RED (Escrever os testes primeiro)
+## Cenario
 
-Crie o arquivo `src/calcularContaDeAgua.test.js` e escreva os testes:
+```gherkin
+Cenario: Consumo na faixa economica
+  Dado que o consumo foi de 8m3
+  Quando o sistema classifica a conta
+  Entao a faixa deve ser "Economica"
 
-```js
-const calcularContaDeAgua = require("./calcularContaDeAgua");
+Cenario: Consumo na faixa normal
+  Dado que o consumo foi de 15m3
+  Quando o sistema classifica a conta
+  Entao a faixa deve ser "Normal"
 
-describe("calcularContaDeAgua", () => {
-  it("deve retornar a tarifa mínima para consumo até 10m³", () => {
-    // Exemplo: 8m³ com tarifa R$5 → R$50.00
-  });
+Cenario: Consumo na faixa de atencao
+  Dado que o consumo foi de 25m3
+  Quando o sistema classifica a conta
+  Entao a faixa deve ser "Atencao"
 
-  it("deve retornar a tarifa mínima exatamente no limite de 10m³", () => {
-    // Exemplo: 10m³ com tarifa R$5 → R$50.00
-  });
-
-  it("deve calcular o valor com excesso para consumo acima de 10m³", () => {
-    // Exemplo: 15m³ com tarifa R$5 → R$87.50
-  });
-
-  it("deve calcular corretamente com valores maiores", () => {
-    // Exemplo: 25m³ com tarifa R$7 → R$227.50
-  });
-
-  it("deve retornar 0 para consumo negativo", () => {
-  });
-
-  it("deve retornar 0 para tarifa negativa", () => {
-  });
-});
+Cenario: Consumo invalido
+  Dado que o consumo e -5
+  Quando o sistema classifica a conta
+  Entao o resultado deve ser null
 ```
 
-Rode os testes:
-```bash
-npx jest
-```
-
-Todos devem **falhar** (RED) — isso é esperado! A função ainda não existe.
-
-## Passo 2 — GREEN (Implementar a função)
-
-Crie o arquivo `src/calcularContaDeAgua.js` e implemente a função:
-
-```js
-function calcularContaDeAgua(consumoM3, tarifaPorM3) {
-  // Sua implementação aqui
-}
-
-module.exports = calcularContaDeAgua;
-```
-
-Rode os testes novamente:
-```bash
-npx jest
-```
-
-Todos devem **passar** (GREEN)!
-
-## Comandos Jest que você vai usar
+## Comandos Jest que voce vai usar
 
 | Comando | O que faz |
 |---------|-----------|
 | `describe("nome", () => {})` | Agrupa testes relacionados |
-| `it("descrição", () => {})` | Define um teste individual |
+| `it("descricao", () => {})` | Define um teste individual |
 | `expect(valor).toBe(esperado)` | Verifica igualdade |
-| `expect(valor).toBeCloseTo(esperado, 2)` | Verifica números decimais |
+| `expect(valor).toBeNull()` | Verifica que o valor e null |
 
-## Dica
+## Dicas
 
-Para comparar números decimais (como 87.50), use `toBeCloseTo` em vez de `toBe`:
-
-```js
-expect(calcularContaDeAgua(15, 5)).toBeCloseTo(87.50, 2);
-```
-
-## Como rodar
-
-```bash
-cd javascript
-npx jest
-```
-
-## Conceito conectado (Dia 1)
-
-- **Ato 4**: "TDD" — Test-Driven Development: escrever o teste primeiro, implementar depois
-- **Ato 2**: "O que é um teste" — entrada (consumo + tarifa), ação (calcular), resultado esperado (valor da conta)
-
-## Tempo estimado
-
-~15 minutos
+- Lembre de testar os limites: 10 (ultimo da Economica), 11 (primeiro da Normal), 20 (ultimo da Normal), 21 (primeiro da Atencao)
+- A funcao deve ser exportada com `module.exports = classificarConta`

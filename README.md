@@ -73,8 +73,8 @@ Cada desafio contem:
 
 | #  | Nome              | O que pratica                                              |
 |----|-------------------|------------------------------------------------------------|
-| 10 | TDD Red/Green     | Escrever testes antes da funcao (calcularContaDeAgua)      |
-| 11 | BDD do Gherkin    | Converter cenario Gherkin em teste Jest (verificarChamado) |
+| 10 | TDD Red/Green     | Escrever testes antes da funcao (classificarConta)         |
+| 11 | BDD do Gherkin    | Converter cenario Gherkin em teste Jest (statusChamado)    |
 
 ## Como Rodar os Testes
 

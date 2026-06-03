@@ -1,118 +1,64 @@
-# Desafio 11 — BDD do Gherkin: Converter cenário em teste
-
-> **Solo** — Converta o cenário Gherkin do Dia 1 em um teste Jest real.
+# Desafio 11 — BDD do Gherkin: statusChamado()
 
 ## Objetivo
 
-Pegar o cenário escrito em Gherkin (que vimos no Dia 1) e transformá-lo em um teste automatizado usando `describe` e `it` do Jest.
+Converter cenarios Gherkin em testes Jest automatizados, seguindo a correspondencia Dado/Quando/Entao → variaveis/acao/expect.
 
-## Lembre-se do Gherkin (Dia 1)
+## Regras de negocio
 
-No Dia 1, vimos como escrever cenários de teste usando Gherkin:
+A funcao `statusChamado(status, dias)` recebe o status do chamado e quantos dias ele esta aberto, e determina se esta atrasado:
+
+- `"Aberto"` com mais de 7 dias → `"Atrasado"`
+- `"Em Andamento"` com mais de 15 dias → `"Atrasado"`
+- Qualquer outro caso → `"No Prazo"`
+
+## O que voce precisa fazer
+
+1. Crie `src/statusChamado.test.js` convertendo os cenarios Gherkin abaixo em testes Jest
+2. Rode `npx jest` — todos devem **falhar** (RED)
+3. Implemente `src/statusChamado.js`
+4. Rode `npx jest` novamente — todos devem **passar** (GREEN)
+
+## Cenarios
 
 ```gherkin
-Cenário: Calcular conta com consumo na faixa normal
-  Dado que o cliente consumiu 15m³ de água
-  E a tarifa base é R$ 5,00 por m³
-  Quando o sistema calcular a conta
-  Então o valor deve ser R$ 87,50
+Cenario: Chamado aberto a mais de 7 dias
+  Dado um chamado com status "Aberto"
+  E com 10 dias
+  Quando o sistema verifica o prazo
+  Entao o resultado deve ser "Atrasado"
+
+Cenario: Chamado aberto dentro do prazo
+  Dado um chamado com status "Aberto"
+  E com 5 dias
+  Quando o sistema verifica o prazo
+  Entao o resultado deve ser "No Prazo"
+
+Cenario: Chamado em andamento a mais de 15 dias
+  Dado um chamado com status "Em Andamento"
+  E com 20 dias
+  Quando o sistema verifica o prazo
+  Entao o resultado deve ser "Atrasado"
+
+Cenario: Chamado em andamento dentro do prazo
+  Dado um chamado com status "Em Andamento"
+  E com 10 dias
+  Quando o sistema verifica o prazo
+  Entao o resultado deve ser "No Prazo"
 ```
 
-Agora vamos converter isso (e mais cenários) para código Jest!
-
-## A correspondência Gherkin → Jest
+## Correspondencia Gherkin → Jest
 
 | Gherkin | Jest |
 |---------|------|
-| `Cenário` | `it("nome do cenário", () => {})` |
-| `Dado` | Preparação dos dados (variáveis) |
-| `E` | Complemento da preparação |
-| `Quando` | Ação (chamar a função) |
-| `Então` | Verificação (`expect`) |
+| `Cenario` | `it("nome do cenario", () => {})` |
+| `Dado` | Preparacao dos dados (variaveis) |
+| `E` | Complemento da preparacao |
+| `Quando` | Acao (chamar a funcao) |
+| `Entao` | Verificacao (`expect`) |
 
-## O que você precisa fazer
+## Dicas
 
-Crie o arquivo `src/verificarChamado.test.js` com os seguintes cenários:
-
-### Cenário 1 — Chamado urgente de alto impacto
-
-```gherkin
-Cenário: Verificar urgência de chamado com esgoto a céu aberto
-  Dado um chamado do tipo "Esgoto a céu aberto"
-  E com urgência "Alta"
-  Quando o sistema verifica a prioridade
-  Então o chamado deve ser classificado como "Emergência"
-```
-
-### Cenário 2 — Chamado comum
-
-```gherkin
-Cenário: Verificar urgência de chamado com conta com erro
-  Dado um chamado do tipo "Conta com erro"
-  E com urgência "Média"
-  Quando o sistema verifica a prioridade
-  Então o chamado deve ser classificado como "Normal"
-```
-
-### Cenário 3 — Chamado de baixa prioridade
-
-```gherkin
-Cenário: Verificar urgência de chamado com hidrômetro quebrado
-  Dado um chamado do tipo "Hidrômetro quebrado"
-  E com urgência "Baixa"
-  Quando o sistema verifica a prioridade
-  Então o chamado deve ser classificado como "Baixa Prioridade"
-```
-
-## Função a ser testada
-
-Crie o arquivo `src/verificarChamado.js` com uma função que recebe `tipo` e `urgencia` e retorna a classificação de prioridade:
-
-| Tipo | Urgência | Resultado esperado |
-|------|----------|-------------------|
-| "Esgoto a céu aberto" | "Alta" | "Emergência" |
-| "Conta com erro" | "Média" | "Normal" |
-| "Hidrômetro quebrado" | "Baixa" | "Baixa Prioridade" |
-
-## Exemplo de estrutura do teste
-
-```js
-const verificarChamado = require("./verificarChamado");
-
-describe("Verificar prioridade de chamado", () => {
-  it("deve classificar como Emergência quando esgoto com urgência Alta", () => {
-    // Dado
-    const tipo = "Esgoto a céu aberto";
-    const urgencia = "Alta";
-
-    // Quando
-    const resultado = verificarChamado(tipo, urgencia);
-
-    // Então
-    expect(resultado).toBe("Emergência");
-  });
-
-  // Escreva os outros cenários aqui...
-});
-```
-
-## Dica
-
-Perceba como o `describe` agrupa os testes (como "Feature" no Gherkin), e cada `it` é um cenário. Os comentários `// Dado`, `// Quando`, `// Então` ajudam a ver a correspondência com o Gherkin.
-
-## Como rodar
-
-```bash
-cd javascript
-npx jest
-```
-
-## Conceito conectado (Dia 1)
-
-- **Ato 2**: "Gherkin" — Dado/Quando/Então em português
-- **Ato 4**: "BDD" — Behavior-Driven Development — pensar em comportamento antes de implementar
-- **Ato 4**: "ATDD" — Acceptance Test-Driven Development
-
-## Tempo estimado
-
-~15 minutes
+- Cada `it` e um cenario. O `describe` agrupa todos (como "Feature" no Gherkin)
+- Use comentarios `// Dado`, `// Quando`, `// Entao` para manter a correspondencia visivel
+- A funcao deve ser exportada com `module.exports = statusChamado`
