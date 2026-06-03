@@ -78,12 +78,6 @@ Cada desafio contem:
 
 ## Como Rodar os Testes
 
-### Maestro
-
-```bash
-maestro test maestro/challenges/01-primeiros-passos/template.yaml
-```
-
 ### JavaScript (Jest)
 
 ```bash
