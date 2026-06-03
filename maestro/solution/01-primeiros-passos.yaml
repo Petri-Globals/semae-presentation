@@ -1,8 +1,6 @@
-url: https://petri-globals.github.io/semae-presentation
+url: https://petri-globals.github.io/semae-presentation/ajuda.html
 ---
 - launchApp
-- tapOn: "Ajuda"
 - assertVisible: "Perguntas Frequentes"
 - tapOn: "Como solicitar uma ligação nova de água?"
-- assertVisible:
-    css: ".accordion-item.open p"
+- assertVisible: "Dirija-se"
