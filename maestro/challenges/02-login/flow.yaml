@@ -1,14 +1,11 @@
-url: https://petri-globals.github.io/semae-presentation
+url: https://petri-globals.github.io/semae-presentation/login.html
 ---
-# PARTE A: Login válido
-
 # 1. Abra o site com clearState
-- launchApp:
-    clearState: true
 
-# 2-5: Complete aqui
+# 2. Preencha o campo "Usuário" com "admin"
 
+# 3. Preencha o campo "Senha" com "semae123"
 
-# PARTE B: Login inválido
+# 4. Clique em "Entrar"
 
-# 6-10: Complete aqui
+# 5. Verifique que "Bem-vindo" aparece na tela
