@@ -7,4 +7,4 @@ url: https://petri-globals.github.io/semae-presentation
 - tapOn: "Senha"
 - inputText: "semae123"
 - tapOn: "Entrar"
-- assertVisible: "Bem-vindo"
+- assertVisible: ".*Bem-vindo.*"

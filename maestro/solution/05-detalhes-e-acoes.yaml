@@ -7,8 +7,7 @@ url: https://petri-globals.github.io/semae-presentation
 - tapOn: "Senha"
 - inputText: "semae123"
 - tapOn: "Entrar"
-- assertVisible:
-    css: "#saudacao"
+- assertVisible: ".*Bem-vindo.*"
 - tapOn: "Meus Chamados"
 - tapOn: "#002"
 - assertVisible: "Falta de água"
@@ -17,5 +16,5 @@ url: https://petri-globals.github.io/semae-presentation
 - tapOn: "Adicionar Observação"
 - inputText: "Equipe de manutenção confirmada para hoje."
 - tapOn: "Adicionar"
-- assertVisible: "Observação adicionada com sucesso"
-- assertVisible: "Equipe de manutenção confirmada para hoje"
+- assertVisible: ".*Observação adicionada com sucesso.*"
+- assertVisible: ".*Equipe de manutenção confirmada para hoje.*"

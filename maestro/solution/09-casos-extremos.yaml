@@ -3,7 +3,7 @@ url: https://petri-globals.github.io/semae-presentation
 - launchApp:
     clearState: true
 - tapOn: "Entrar"
-- assertVisible: "Campo obrigatório"
+- assertVisible: ".*Campo obrigatório.*"
 - launchApp:
     clearState: true
 - tapOn: "Usuário"
@@ -11,17 +11,16 @@ url: https://petri-globals.github.io/semae-presentation
 - tapOn: "Senha"
 - inputText: "semae123"
 - tapOn: "Entrar"
-- assertVisible:
-    css: "#saudacao"
+- assertVisible: ".*Bem-vindo.*"
 - tapOn: "Reportar Problema"
 - tapOn: "Enviar Chamado"
-- assertVisible: "Campo obrigatório"
+- assertVisible: ".*Campo obrigatório.*"
 - tapOn: "Segunda Via"
 - tapOn: "Número da Matrícula"
 - inputText: "00000"
 - tapOn: "Consultar"
-- assertVisible: "não encontrada"
+- assertVisible: ".*não encontrada.*"
 - tapOn: "Meus Chamados"
 - tapOn: "Buscar por texto..."
 - inputText: "XYZW"
-- assertVisible: "Nenhum chamado encontrado"
+- assertVisible: ".*Nenhum chamado encontrado.*"

@@ -7,8 +7,7 @@ url: https://petri-globals.github.io/semae-presentation
 - tapOn: "Senha"
 - inputText: "semae123"
 - tapOn: "Entrar"
-- assertVisible:
-    css: "#saudacao"
+- assertVisible: ".*Bem-vindo.*"
 - tapOn: "Reportar Problema"
 - tapOn: "Selecione..."
 - tapOn: "Vazamento"
@@ -18,4 +17,4 @@ url: https://petri-globals.github.io/semae-presentation
 - inputText: "Vazamento no cruzamento com a Rua Oscar Freire"
 - tapOn: "Alta"
 - tapOn: "Enviar Chamado"
-- assertVisible: "registrado com sucesso"
+- assertVisible: ".*registrado com sucesso.*"

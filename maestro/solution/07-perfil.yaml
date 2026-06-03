@@ -7,15 +7,14 @@ url: https://petri-globals.github.io/semae-presentation
 - tapOn: "Senha"
 - inputText: "semae123"
 - tapOn: "Entrar"
-- assertVisible:
-    css: "#saudacao"
+- assertVisible: ".*Bem-vindo.*"
 - tapOn: "Perfil"
 - assertVisible: "Carlos Silva"
 - tapOn: "Telefone"
 - eraseText
 - inputText: "(19) 99876-5432"
 - tapOn: "Salvar Alterações"
-- assertVisible: "Perfil atualizado com sucesso"
+- assertVisible: ".*Perfil atualizado com sucesso.*"
 - assertVisible: "(19) 99876-5432"
 - tapOn: "Meus Chamados"
 - tapOn: "Perfil"

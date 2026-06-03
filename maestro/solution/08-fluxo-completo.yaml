@@ -13,7 +13,7 @@ url: https://petri-globals.github.io/semae-presentation
 - inputText: "Esgoto transbordando na calçada"
 - tapOn: "Alta"
 - tapOn: "Enviar Chamado"
-- assertVisible: "registrado com sucesso"
+- assertVisible: ".*registrado com sucesso.*"
 - tapOn: "Meus Chamados"
 - scrollUntilVisible:
     element: "Esgoto a céu aberto"

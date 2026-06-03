@@ -1,2 +1,5 @@
 # Playwright MCP logs.
 .playwright*
+
+# Dependencies.
+**/node_modules/**
