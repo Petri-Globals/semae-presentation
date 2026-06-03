@@ -1,3 +1,5 @@
+<img width="960" height="540" alt="SEMAE _ Testes com Maestro" src="https://github.com/user-attachments/assets/4cab6134-0c3e-4de2-a277-60f54e8bd873" />
+
 # Workshop de Testes Automatizados com Maestro -- SEMAE
 
 Workshop pratico de testes automatizados usando o **Maestro** para desenvolvedores Oracle APEX. O repositorio contem um site simulado do SEMAE (servico de agua de Campinas), desafios progressivos de testes com Maestro e desafios de JavaScript (TDD/BDD).
