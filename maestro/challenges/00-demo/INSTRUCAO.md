@@ -1,7 +1,5 @@
 # Desafio 00 — Demo
 
-> **Instrutor resolve na tela.** Os participantes assistem e acompanham.
-
 ## Objetivo
 
 Mostrar o Maestro Studio em ação, explicar a sintaxe YAML e rodar um flow completo do começo ao fim.
