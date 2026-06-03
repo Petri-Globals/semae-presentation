@@ -6,12 +6,8 @@ url: https://petri-globals.github.io/semae-presentation
 - assertVisible: ".*Campo obrigatório.*"
 - launchApp:
     clearState: true
-- tapOn: "Usuário"
-- inputText: "admin"
-- tapOn: "Senha"
-- inputText: "semae123"
-- tapOn: "Entrar"
-- assertVisible: ".*Bem-vindo.*"
+- runFlow:
+    file: ../subflows/login.yaml
 - tapOn: "Reportar Problema"
 - tapOn: "Enviar Chamado"
 - assertVisible: ".*Campo obrigatório.*"
